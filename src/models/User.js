@@ -3,26 +3,10 @@ const {Model, DataTypes} = require('sequelize');
 class User extends Model{
     static init(sequelize){
         super.init({
-            name: {
-                type: DataTypes.STRING,
-                allowNull: false,
-                validate: {
-                    notEmpty: {
-                        msg: "Esse campo não pode ser vazio"
-                    }
-                }
-            },
+            name: DataTypes.STRING,
             email: DataTypes.STRING,
-            password: {
-                type: DataTypes.STRING,
-                allowNull: false,
-                validate: {
-                    isEmail: {
-                        msg: "Formato de e-mail inválido"
-                    }
-                }
-            }
-        },{
+            password: DataTypes.STRING 
+        }, {
             sequelize
         })
     }
