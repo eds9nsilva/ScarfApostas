@@ -9,7 +9,7 @@ module.exports = {
         autoIncrement: true,
         allowNull: false
       },
-      name:{
+      nome:{
         type: Sequelize.STRING,
         allowNull: false,
       },
@@ -17,7 +17,15 @@ module.exports = {
         type: Sequelize.STRING,
         allowNull: false
       },
-      password: {
+      senha: {
+        type: Sequelize.STRING,
+        allowNull: false
+      },
+      tipo: {
+        type: Sequelize.INTEGER,
+        allowNull: false
+      },
+      telefone: {
         type: Sequelize.STRING,
         allowNull: false
       },

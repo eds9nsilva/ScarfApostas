@@ -6,12 +6,13 @@ module.exports = {
 
     async Store(req, res) {
         try {
-            const { name, email, password } = req.body;
+            const { nome, email, senha, telefone } = req.body;
             seach = await User.findOne({ where: { email: email } });
             if (seach != null) {
                 return res.json({ Message: "Email já cadastrado" })
             } else {
-                await User.create({ name, email, password }).then(function (result) {
+                var tipo = 0
+                await User.create({ nome, email, senha, tipo, telefone }).then(function (result) {
                     return res.status(200).json(result);
                 })
                 const transporter = await nodemailer.createTransport({

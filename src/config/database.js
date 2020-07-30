@@ -8,6 +8,6 @@ module.exports = {
     define: {
         timestamps: true,
         underscored: true,
-        timezone: 'BRT:Brasília'
-    }
+    },
+    timezone: 'America/Recife'
 }
