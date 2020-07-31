@@ -8,4 +8,5 @@ routes.get('/user', UserController.SeachUser);
 
 
 routes.post('/aposta', ApostaController.Store);
+routes.post('/recSenha', UserController.reSenha);
 module.exports = routes;
