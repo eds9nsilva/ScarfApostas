@@ -1,7 +1,6 @@
 const User = require('../models/User');
-const nodemailer = require('nodemailer');
 const hbs = require('nodemailer-express-handlebars');
-
+const SendEmail = require('../utils/sendEmail');
 module.exports = {
 
     async Store(req, res) {
@@ -15,24 +14,7 @@ module.exports = {
                 await User.create({ nome, email, senha, tipo, telefone }).then(function (result) {
                     return res.status(200).json(result);
                 })
-                const transporter = await nodemailer.createTransport({
-                    service: 'Gmail',
-                    auth: {
-                        user: "eds9ndasilva@gmail.com",
-                        pass: "phpsantosfc007"
-                    }
-                });
-                
-                const emailOptions = {
-                    from: 'eds9ndasilva@gmail.com',
-                    to: email,
-                    subject: 'Seja Bem-vindo',
-                    text: 'Scarf Apostas'
-                    //template: 'index'
-                }
-               /* transporter.sendMail(emailOptions, function(err){
-                    console.log(err)
-                }) */
+                SendEmail.sendRegister(email);
             }
         } catch (error) {
             return res.status(400).json({ error: error });
