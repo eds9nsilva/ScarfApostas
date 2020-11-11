@@ -7,15 +7,16 @@ class User extends Model{
             email: DataTypes.STRING,
             senha: DataTypes.STRING,
             tipo: DataTypes.INTEGER,
-            telefone: DataTypes.STRING
+            telefone: DataTypes.STRING,
+            nascimento: DataTypes.STRING,
+            estado: DataTypes.STRING,
+            cidade: DataTypes.STRING
         }, {
             sequelize
         })
     }
 
-    static associate(models){
-        this.hasMany(models.Aposta, { foreignKey: 'id_user', as: 'users' });    
-    }
+    
 }
 
 module.exports = User;

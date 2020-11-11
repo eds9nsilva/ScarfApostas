@@ -1,4 +1,5 @@
 const User = require('../models/User');
+
 const hbs = require('nodemailer-express-handlebars');
 const SendEmail = require('../utils/sendEmail');
 const senhaRandom = require('../utils/randomNumber');
@@ -6,16 +7,17 @@ module.exports = {
 
     async Store(req, res) {
         try {
-            const { nome, email, senha, telefone } = req.body;
+            const { nome, email,telefone,nascimento, estado, cidade, senha } = req.body;
+            console.log(req.body.nascimento)
             seach = await User.findOne({ where: { email: email } });
             if (seach != null) {
                 return res.json({ Message: "Email já cadastrado" })
             } else {
                 var tipo = 0
-                await User.create({ nome, email, senha, tipo, telefone }).then(function (result) {
+                await User.create({ nome, email, senha, nascimento,  telefone, estado, cidade,tipo }).then(function (result) {
                     return res.status(200).json(result);
                 })
-                SendEmail.sendRegister(email);
+                //SendEmail.sendRegister(email);
             }
         } catch (error) {
             return res.status(400).json({ error: error });

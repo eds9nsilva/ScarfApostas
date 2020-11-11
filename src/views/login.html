@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="PT-BR">
+
+<!-- Mirrored from www.sistemagm12.com/login.php by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 25 Oct 2020 18:12:07 GMT -->
+<!-- Added by HTTrack -->
+<meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Acessar - Sistema GM12</title>
+
+    <link rel="stylesheet"
+        href="backend/vendors/bower_components/material-design-iconic-font/dist/css/material-design-iconic-font.min.css">
+    <link rel="stylesheet" href="backend/vendors/bower_components/animate.css/animate.min.css">
+
+    <link rel="stylesheet" href="backend/css/app.min.css">
+</head>
+
+<body data-sa-theme="7">
+    <div class="modal fade" id="recuperarModal" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <i class="zmdi zmdi-close"></i>
+                    </button>
+                </div>
+                <form method="post" name="frmRecuperar">
+                    <div class="modal-body text-center">
+                        <h3 class="title">Recuperar Senha</h3>
+                        <input type="email" name="ema" id="email_recuperacao" autocomplete="on" class="form-control"
+                            placeholder="Email">
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" id="btn_enviar_email_recuperacao" name="btnSubmit"
+                            class="btn btn-success btn-sm btn-round">Enviar código para recuperar senha</button>
+                        <button type="button" class="btn btn-danger btn-sm btn-round"
+                            data-dismiss="modal">Fechar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-4">
+                <div class="login">
+
+                    <div class="login__block active" id="l-login">
+                        <div class="login__block__header">
+                            <i class="zmdi zmdi-account-circle"></i>
+                            Olá, usuário! Estudar...
+                        </div>
+                        <div class="login__block__body">
+                            <form method="post" name="frmLogin">
+                                <div class="form-group">
+                                    <input type="email" name="txtEmail" autocomplete="on" placeholder="Email"
+                                        class="form-control text-center">
+                                </div>
+                                <div class="form-group">
+                                    <input type="password" name="txtPassword" autocomplete="off"
+                                        class="form-control text-center" placeholder="Senha">
+                                </div>
+                                <button type="submit" name="btnSubmit" class="btn btn-dark">Acessar</button>
+                            </form>
+                        </div>
+                        <a href="#" id="btn_recuperar" class="btn btn-link">Esqueci minha senha</a><br><a
+                            href="cadastro.html" class="btn btn-light">Quero me cadastrar</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="login">
+                    <a href="index.html"><img src="backend/img/logo-t.png" alt=""></a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <script src="backend/vendors/bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="backend/vendors/bower_components/popper.js/dist/umd/popper.min.js"></script>
+    <script src="backend/vendors/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+
+    <script src="backend/js/app.min.js"></script>
+    <script src="backend/js/notify.js"></script>
+    <script>
+        $('#myModal').modal('show')
+        $('#myModal1').modal('show')
+        $('#myModal2').modal('show')
+
+        $('#btn_recuperar').click(function () {
+            console.log('clicou');
+            $('#recuperarModal').modal('show');
+        });
+
+        var base_url = location.protocol + '//' + window.location.host.toString();
+
+        $('#btn_enviar_email_recuperacao').click(function () {
+            if ($('#email_recuperacao').val().length > 0) {
+
+                $.ajax({
+                    url: base_url + "/recuperarsenha/recuperarSenha.php?email=" + $('#email_recuperacao').val(),
+                    type: 'POST',
+                    dataType: "json",
+                    contentType: "application/json; charset=utf-8",
+                    statusCode: {
+                        200: function (e) {
+                            if (e == 1) {
+
+                                $.notify({ title: '', message: 'Tudo Ok! Enviamos um email para você!', }, {
+                                    type: 'success',
+                                    delay: 500, animate: { enter: 'animated bounceIn', exit: 'animated bounceOut' }
+                                });
+                                $('#email_recuperacao').val("");
+                                $('#recuperarModal').modal('hide');
+
+                                console.log(e);
+
+                            } else if (e == 2) {
+                                $.notify({ title: '', message: 'Email não encontrado!', }, {
+                                    type: 'danger',
+                                    delay: 500, animate: { enter: 'animated bounceIn', exit: 'animated bounceOut' }
+                                });
+                            }
+                        }, 400: function (msg) {
+                            console.log(msg);
+                        }, 404: function (msg) {
+                            console.log(msg);
+                        }, 403: function (msg) {
+                            console.log(msg);
+                        }, 500: function (msg) {
+                            console.log(msg);
+                        }
+                    }
+                });
+            } else {
+                $.notify({ title: '', message: 'Digite um Email!', }, {
+                    type: 'danger',
+                    delay: 500, animate: { enter: 'animated bounceIn', exit: 'animated bounceOut' }
+                });
+            }
+        });
+    </script>
+</body>
+
+<!-- Mirrored from www.sistemagm12.com/login.php by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 25 Oct 2020 18:12:08 GMT -->
+
+</html>

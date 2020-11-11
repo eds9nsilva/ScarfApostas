@@ -21,12 +21,24 @@ module.exports = {
         type: Sequelize.STRING,
         allowNull: false
       },
-      tipo: {
-        type: Sequelize.INTEGER,
-        allowNull: false
+      nascimento: {
+        type: Sequelize.STRING,
+        allowNull: true
       },
       telefone: {
         type: Sequelize.STRING,
+        allowNull: true
+      },
+      estado: {
+        type: Sequelize.STRING,
+        allowNull: true
+      },
+      cidade: {
+        type: Sequelize.STRING,
+        allowNull: true
+      },
+      tipo: {
+        type: Sequelize.INTEGER,
         allowNull: false
       },
       created_at:{

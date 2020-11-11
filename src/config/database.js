@@ -4,10 +4,10 @@ module.exports = {
     port: '3306',
     username: 'root',
     password: '',
-    database: 'aposta',
+    database: 'apinode',
     define: {
         timestamps: true,
         underscored: true,
     },
-    timezone: 'America/Recife'
+   // timezone: 'America/Recife'
 }

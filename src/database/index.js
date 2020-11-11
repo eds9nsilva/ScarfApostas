@@ -1,10 +1,8 @@
 const Sequelize = require('sequelize');
 const dbConfig = require('../config/database');
 const User = require('../models/User');
-const Aposta = require('../models/Aposta');
 const connection = new Sequelize(dbConfig);
 
 User.init(connection);
-Aposta.init(connection);
 
 module.exports = connection;

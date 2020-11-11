@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="PT-BR">
+
+<!-- Mirrored from www.sistemagm12.com/cadastro.php by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 25 Oct 2020 18:12:09 GMT -->
+<!-- Added by HTTrack -->
+<meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport" />
+    <title>
+        Cadastre-se - Sistema GM12
+    </title>
+
+    <link rel="stylesheet"
+        href="backend/vendors/bower_components/material-design-iconic-font/dist/css/material-design-iconic-font.min.css">
+    <link rel="stylesheet" href="backend/vendors/bower_components/animate.css/animate.min.css">
+
+    <link rel="stylesheet" href="backend/css/app.min.css">
+</head>
+
+<body data-sa-theme="7">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-10 m-mt-50">
+                <h2 class=" text-center"><a href="/"><img src="backend/img/logo-t.png" alt=""></a></h2>
+
+                <div class="card m-mt-50">
+                    <div class="card-body">
+                        <h4 class="card-title text-center">Crie Sua Conta</h4>
+                        
+                        <form class="form" method="POST" action="/User">
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <div class="row">
+                                        <div class="col-sm-12">
+                                            <div class="form-group">
+                                                <input type="text" name="nome" class="form-control"
+                                                    placeholder="Nome e Sobrenome" required="">
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-4">
+                                            <div class="form-group">
+                                                <input type="email" name="email" class="form-control"
+                                                    placeholder="Email" required="">
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-4">
+                                            <div class="form-group">
+                                                <input type="text" class="form-control" name="telefone"
+                                                    placeholder="Whatsapp" id="phone">
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <div class="form-group">
+                                                <input type="text" name="nascimento" class="form-control"
+                                                    placeholder="Data Nascimento" required="">
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <div class="form-group">
+                                                <input type="text" name="estado" class="form-control"
+                                                    placeholder="Estado" required="">
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <div class="form-group">
+                                                <input type="text" class="form-control" name="cidade"
+                                                    placeholder="Cidade">
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <div class="form-group">
+                                                <input type="password"
+                                                    onKeyUp="validarSenha('txtPass', 'txtPassAccept', 'resultadoCadastro');"
+                                                    id="txtPass" name="senha" placeholder="Senha" autocomplete="off"
+                                                    required class="form-control" />
+                                            </div>
+                                        </div>
+
+                                        <div class="col-sm-12 text-center">
+                                            <input type="hidden" name="img" value="">
+                                            <div class="text-center"><span id="resultadoCadastro">Preencha os
+                                                    campos!</span></div><br>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-12 text-center">
+                                    <button type="submit" name="btnSubmit"
+                                        class="btn btn-dark btn-lg">Cadastrar
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+    <script src="backend/vendors/bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="backend/vendors/bower_components/popper.js/dist/umd/popper.min.js"></script>
+    <script src="backend/vendors/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+
+    <script src="backend/js/app.min.js"></script>
+    <script src="backend/js/script.js"></script>
+    <script src="backend/js/jquery.maskedinput.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('#sidebarCollapse').on('click', function () {
+                $('#sidebar').toggleClass('active');
+            });
+        });
+        $('#myModal').modal('show');
+
+        // jQuery Meio Mask
+        jQuery(function ($) {
+            $("#phone").mask("(99) 9 9999-9999");
+        });
+
+    </script>
+</body>
+
+<!-- Mirrored from www.sistemagm12.com/cadastro.php by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 25 Oct 2020 18:12:10 GMT -->
+
+</html>
